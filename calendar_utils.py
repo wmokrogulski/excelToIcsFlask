@@ -12,15 +12,15 @@ def read_from_excel(filename='test.xlsx'):
     df = pd.read_excel(filename)
     events = []
     for index, row in df.iterrows():
-        if not pd.isnull(row['koniec']):
+        if not pd.isnull(row['end']):
             row.fillna('', inplace=True)
-            e = create_event(row['nazwa'], row['początek'], end=row['koniec'], location=row['miejsce'],
-                             description=row['opis'])
+            e = create_event(row['name'], row['start'], end=row['end'], location=row['location'],
+                             description=row['description'])
         else:
             row.fillna('', inplace=True)
-            e = create_event(row['nazwa'], row['początek'],
-                             duration=timedelta(minutes=int(row['czas trwania (min)'])), location=row['miejsce'],
-                             description=row['opis'])
+            e = create_event(row['name'], row['begin'],
+                             duration=timedelta(minutes=int(row['duration (min)'])), location=row['location'],
+                             description=row['description'])
         events.append(e)
     return events
 
