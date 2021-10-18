@@ -12,13 +12,15 @@ def index():
 @app.route('/response/', methods=['GET', 'POST'])
 def response():
     file=request.files['file']
-    if file.filename.split('.')[-1] not in ['xls', 'xlsx']:
+    name=file.filename.rsplit('.', 2)[0]
+    extension=file.filename.rsplit('.', 2)[1]
+    if extension not in ['xls', 'xlsx']:
         return 'Invalid file type'
-    cal=calendar_from_excel(request.files['file'])
+    cal=calendar_from_excel(file)
     print(str(cal))
 
     response = make_response(str(cal))
-    cd = 'attachment; filename=test.ics'
+    cd = f'attachment; filename={name}.ics'
     response.headers['Content-Disposition'] = cd
     response.mimetype = 'text/plain'
 
