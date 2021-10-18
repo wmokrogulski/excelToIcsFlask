@@ -9,7 +9,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/response', methods=['GET', 'POST'])
+@app.route('/response/', methods=['GET', 'POST'])
 def response():
     file=request.files['file']
     if file.filename.split('.')[-1] not in ['xls', 'xlsx']:
@@ -25,5 +25,5 @@ def response():
     return response
 
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
