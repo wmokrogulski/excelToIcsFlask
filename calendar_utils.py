@@ -14,7 +14,7 @@ def read_from_excel(filename='test.xlsx'):
     for index, row in df.iterrows():
         if not pd.isnull(row['end']):
             row.fillna('', inplace=True)
-            e = create_event(row['name'], row['start'], end=row['end'], location=row['location'],
+            e = create_event(row['name'], row['begin'], end=row['end'], location=row['location'],
                              description=row['description'])
         else:
             row.fillna('', inplace=True)
