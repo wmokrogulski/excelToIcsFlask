@@ -7,4 +7,5 @@ Supported file format:
 Example excel file in supported format can be found here:
 [example excel file](example.xlsx)
 
+Link to the web app:
 https://excel-to-ics.herokuapp.com/
